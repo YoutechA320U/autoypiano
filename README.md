@@ -3,7 +3,7 @@
 ESP32　MicroPython及び　RaspberryPi Python2.7用自動演奏トイピアノプログラム。25鍵,ノートON,ノートOFFのみ対応
 
 ## 概要
-このプログラムは、UARTとI2Cでソレノイド25個を制御します。
+このプログラムは、UARTとI2Cでソレノイド25個を制御しトイピアノを自動演奏します。
 
 ## 開発環境
     OS : Raspbian　stretch
