@@ -13,17 +13,19 @@ ESP32 MicroPython及び　RaspberryPi Python2.7用自動演奏トイピアノプ
 ## インストールが必要なライブラリ
     Python：pyserial,　smbus　argparse
     MicroPython：machine
+
 ## 回路図
 ![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "SS")
 ## 使い方
 
-RaspberryPiはUARTを有効にしてMIDI用に設定を変更し、I2Cを有効にしてから実行してください。
+RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www.samplerbox.org/article/midiinwithrpi)I2Cを有効にしてから実行してください。
 ESP32は実行するだけです
 
 ## 備考
 ソレノイドの電源は12V2AのACアダプターを使ってください。また、トランジスタやソレノイドに負担がかかるのであまり長時間ソレノイドをONのままにしないでください。
  
-
+### 参考コード・資料
+ * <http://www.samplerbox.org/article/midiinwithrpi>  
 ## 履歴
     [2018/12/7] - 初回リリース
 
