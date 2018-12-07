@@ -12,7 +12,7 @@ ESP32 MicroPython及び　RaspberryPi Python2.7用自動演奏トイピアノプ
 
 ## インストールが必要なライブラリ
     Python：pyserial,　smbus　argparse
-    MicroPython：無し
+    MicroPython：machine
 ## 回路図
 ![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "SS")
 ## 使い方
