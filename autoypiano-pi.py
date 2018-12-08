@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 # RaspberryPi用
-import time
 import serial
 import smbus
 import argparse
-import subprocess
 
 # パーサーを作る
 parser = argparse.ArgumentParser(
