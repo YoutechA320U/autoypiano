@@ -36,7 +36,7 @@ while True:
          continue
       else:
          data1.extend(data2)
-         if 192 <= data1[0] <= 208 or (data1[0] == 241 or 243) or data1[1] >= 246:
+         if 192 <= data1[0] <= 208 or data1[1] >= 246 or data1[0] == 241 or data1[0] == 243: 
             continue
          try:
             data3 = list(uart.read(1))
@@ -44,6 +44,7 @@ while True:
             continue
          else:
             data1.extend(data3)
+            print (data1)
             if data1[0] == 144 and data1[2] != 0:
                if data1[1] ==77:
                   note1a = bin(note1a | 0b1)
