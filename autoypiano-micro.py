@@ -43,8 +43,7 @@ while True:
          except  TypeError:
             continue
          else:
-            data1.extend(data3)
-            print (data1)
+            data1.extend(data3))
             if data1[0] == 144 and data1[2] != 0:
                if data1[1] ==77:
                   note1a = bin(note1a | 0b1)
