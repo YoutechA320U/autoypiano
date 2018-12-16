@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # ESP32 MicroPython用
-from machine import UART
-from machine import Pin, I2C
+from machine import UART, Pin, I2C
 uart = UART(2, 31250)
 uart.init(31250, bits=8, parity=None, stop=1)
 i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
@@ -43,7 +42,7 @@ while True:
          except  TypeError:
             continue
          else:
-            data1.extend(data3))
+            data1.extend(data3)
             if data1[0] == 144 and data1[2] != 0:
                if data1[1] ==77:
                   note1a = bin(note1a | 0b1)

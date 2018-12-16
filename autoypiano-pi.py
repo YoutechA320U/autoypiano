@@ -3,7 +3,6 @@
 import serial
 import smbus
 import argparse
-
 # パーサーを作る
 parser = argparse.ArgumentParser(
             add_help=True, # -h/?help オプションの追加
@@ -180,4 +179,3 @@ while True:
                i2c.write_byte_data(0x21,0x15,note2b)
                note2b = list(bin(note2b).replace('0b', '').zfill(8))
          continue
-         
