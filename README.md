@@ -34,7 +34,7 @@ ESP32 MicroPython及びRaspberryPi Python2.7用自動演奏トイピアノプロ
 |ACアダプター|[AD-D120P200](http://akizukidenshi.com/catalog/g/gM-10659/)など12V2A程度のもの|1|
 
 ## 回路図
-![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "SS")
+![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "回路図")
 
 ## 使い方
 
