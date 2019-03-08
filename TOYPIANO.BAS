@@ -1,0 +1,234 @@
+SERIAL 32150,0
+I2C 100
+I2CWRITE $20,$0,$0
+I2CWRITE $20,$01,$0
+I2CWRITE $21,$0,$0
+I2CWRITE $21,$01,$0
+I2CWRITE $20,$14,$0
+I2CWRITE $20,$15,$0
+I2CWRITE $21,$14,$0
+I2CWRITE $20,$15,$0
+A=0:B=0:C=0:D=0
+WHILE 1
+   IF INKEY()=27 THEN BREAK
+   I=SERIALIN()
+   IF I=-1 THEN CONTINUE
+   IF I=128 THEN
+    J=I
+    CONTINUE
+   ELSEIF I=144 THEN
+    K=I
+    CONTINUE
+   ELSEIF J=128 THEN
+     L=I
+     J=0
+     CONTINUE
+   ELSEIF L=77 THEN
+     L=-2
+     A=A AND 254
+     I2CWRITE $20,$14,A
+   ELSEIF L=78 THEN
+     L=-2
+     A=A AND 253
+     I2CWRITE $20,$14,A
+   ELSEIF L=79 THEN
+     L=-2
+     A=A AND 251
+     I2CWRITE $20,$14,A
+   ELSEIF L=80 THEN
+     L=-2
+     A=A AND 247
+     I2CWRITE $20,$14,A
+   ELSEIF L=81 THEN
+     L=-2
+     A=A AND 239
+     I2CWRITE $20,$14,A
+   ELSEIF L=82 THEN
+     L=-2
+     A=A AND 223
+     I2CWRITE $20,$14,A
+   ELSEIF L=83 THEN
+     L=-2
+     A=A AND 191
+     I2CWRITE $20,$14,A
+   ELSEIF L=84 THEN
+     L=-2
+     A=A AND 127
+     I2CWRITE $20,$14,A
+   ELSEIF L=85 THEN
+     L=-2
+     B=B AND 254
+     I2CWRITE $20,$15,B
+   ELSEIF L=86 THEN
+     L=-2
+     B=B AND 253
+     I2CWRITE $20,$15,B
+   ELSEIF L=87 THEN
+     L=-2
+     B=B AND 251
+     I2CWRITE $20,$15,B
+   ELSEIF L=88 THEN
+     L=-2
+     B=B AND 247
+     I2CWRITE $20,$15,B
+   ELSEIF L=89 THEN
+     L=-2
+     B=B AND 239
+     I2CWRITE $20,$15,B
+   ELSEIF L=90 THEN
+     L=-2
+     B=B AND 223
+     I2CWRITE $20,$15,B
+   ELSEIF L=91 THEN
+     L=-2
+     B=B AND 191
+     I2CWRITE $20,$15,B
+   ELSEIF L=92 THEN
+     L=-2
+     B=B AND 127
+     I2CWRITE $20,$15,B
+   ELSEIF L=93 THEN
+     L=-2
+     C=C AND 254
+     I2CWRITE $21,$14,C
+   ELSEIF L=94 THEN
+     L=-2
+     C=C AND 253
+     I2CWRITE $21,$14,C
+   ELSEIF L=95 THEN
+     L=-2
+     C=C AND 251
+     I2CWRITE $21,$14,C
+   ELSEIF L=96 THEN
+     L=-2
+     C=C AND 247
+     I2CWRITE $21,$14,C
+   ELSEIF L=97 THEN
+     L=-2
+     C=C AND 239
+     I2CWRITE $21,$14,C
+   ELSEIF L=98 THEN
+     L=-2
+     C=C AND 223
+     I2CWRITE $21,$14,C
+   ELSEIF L=99 THEN
+     L=-2
+     C=C AND 191
+     I2CWRITE $21,$14,C
+   ELSEIF L=100 THEN
+     L=-2
+     C=C AND 127
+     I2CWRITE $21,$14,C
+   ELSEIF L=101 THEN
+     L=-2
+     D=D AND 254
+     I2CWRITE $21,$15,D
+   ELSEIF K=144 THEN
+     M=I
+     K=0
+     CONTINUE
+   ELSEIF M=77 THEN
+     M=-2
+     A=A OR 1
+     I2CWRITE $20,$14,A
+   ELSEIF M=78 THEN
+     M=-2
+     A=A OR 2
+     I2CWRITE $20,$14,A
+   ELSEIF M=79 THEN
+     M=-2
+     A=A OR 4
+     I2CWRITE $20,$14,A
+   ELSEIF M=80 THEN
+     M=-2
+     A=A OR 8
+     I2CWRITE $20,$14,A
+   ELSEIF M=81 THEN
+     M=-2
+     A=A OR 16
+     I2CWRITE $20,$14,A
+   ELSEIF M=82 THEN
+     M=-2
+     A=A OR 32
+     I2CWRITE $20,$14,A
+   ELSEIF M=83 THEN
+     M=-2
+     A=A OR 64
+     I2CWRITE $20,$14,A
+   ELSEIF M=84 THEN
+     M=-2
+     A=A OR 128
+     I2CWRITE $20,$14,A
+   ELSEIF M=85 THEN
+     M=-2
+     B=B OR 1
+     I2CWRITE $20,$15,B
+   ELSEIF M=86 THEN
+     M=-2
+     B=B OR 2
+     I2CWRITE $20,$15,B
+   ELSEIF M=87 THEN
+     M=-2
+     B=B OR 4
+     I2CWRITE $20,$15,B
+   ELSEIF M=88 THEN
+     M=-2
+     B=B OR 8
+     I2CWRITE $20,$15,B
+   ELSEIF M=89 THEN
+     M=-2
+     B=B OR 16
+     I2CWRITE $20,$15,B
+   ELSEIF M=90 THEN
+     M=-2
+     B=B OR 32
+     I2CWRITE $20,$15,B
+   ELSEIF M=91 THEN
+     M=-2
+     B=B OR 64
+     I2CWRITE $20,$15,B
+   ELSEIF M=92 THEN
+     M=-2
+     B=B OR 128
+     I2CWRITE $20,$15,B
+   ELSEIF M=93 THEN
+     M=-2
+     C=C OR 1
+     I2CWRITE $21,$14,C
+   ELSEIF M=94 THEN
+     M=-2
+     C=C OR 2
+     I2CWRITE $21,$14,C
+   ELSEIF M=95 THEN
+     M=-2
+     C=C OR 4
+     I2CWRITE $21,$14,C
+   ELSEIF M=96 THEN
+     M=-2
+     C=C OR 8
+     I2CWRITE $21,$14,C
+   ELSEIF M=97 THEN
+     M=-2
+     C=C OR 16
+     I2CWRITE $21,$14,C
+   ELSEIF M=98 THEN
+     M=-2
+     C=C OR 32
+     I2CWRITE $21,$14,C
+   ELSEIF M=99 THEN
+     M=-2
+     C=C OR 64
+     I2CWRITE $21,$14,C
+   ELSEIF M=100 THEN
+     M=-2
+     C=C OR 128
+     I2CWRITE $21,$14,C
+   ELSEIF M=101 THEN
+     M=-2
+     D=D OR 1
+     I2CWRITE $21,$15,D
+   ELSE
+     N=I
+     CONTINUE
+   ENDIF
+WEND
