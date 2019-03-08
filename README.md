@@ -4,6 +4,7 @@ ESP32 & RaspberryPi & MachiKania typeM用自動演奏トイピアノプログラ
 
  ## 概要
 このプログラムは、UARTとI2Cでソレノイド25個を制御しトイピアノを自動演奏します。
+
 ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.jpg "Picture1") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.jpg "Picture2") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.jpg "Picture3")
 ## 開発環境
     RaspberryPi 3B+: Raspbian　stretch, Python2.7
@@ -38,7 +39,8 @@ ESP32 & RaspberryPi & MachiKania typeM用自動演奏トイピアノプログラ
 ![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "回路図")
 
 ## 使い方
-RaspberryPiが[autoypiano-pi.py]()、ESP32が[autoypiano-micro.py]()、MachiKaniaが[TOYPIANO.BAS]()です
+RaspberryPiが[autoypiano-pi.py]()、ESP32が[autoypiano-micro.py]()、MachiKaniaが[TOYPIANO.BAS]()です。
+
 RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www.samplerbox.org/article/midiinwithrpi)I2Cを有効にしてから実行してください。
 
 ## 備考
