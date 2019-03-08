@@ -39,7 +39,7 @@ ESP32 & RaspberryPi & MachiKania typeM用自動演奏トイピアノプログラ
 ![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "回路図")
 
 ## 使い方
-RaspberryPiが[autoypiano-pi.py]()、ESP32が[autoypiano-micro.py]()、MachiKaniaが[TOYPIANO.BAS]()です。
+RaspberryPiが[autoypiano-pi.py](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-pi.py)、ESP32が[autoypiano-micro.py](https://github.com/YoutechA320U/autoypiano/blob/master/TOYPIANO.BAS)、MachiKaniaが[TOYPIANO.BAS](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-micro.py)です。
 
 RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www.samplerbox.org/article/midiinwithrpi)I2Cを有効にしてから実行してください。
 
