@@ -4,9 +4,9 @@ ESP32 & RaspberryPi & MachiKania typeM用自動演奏トイピアノプログラ
 
  ## 概要
 このプログラムは、UARTとI2Cでソレノイド25個を制御しトイピアノを自動演奏します。
-![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.png "Picture1")
-![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.png "Picture2")
-![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.png "Picture3")
+![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.jpg "Picture1")
+![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.jpg "Picture2")
+![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.jpg "Picture3")
 ## 開発環境
     RaspberryPi 3B+: Raspbian　stretch, Python2.7
     ESP32-DevKitC: MicroPython
@@ -20,7 +20,9 @@ ESP32 & RaspberryPi & MachiKania typeM用自動演奏トイピアノプログラ
 |部品名|型番など|数量|
 |:---|:--:|---:|
 |トイピアノ|[KAWAI ミニピアノ P-25 (ローズレッド)](https://www.amazon.co.jp/%E6%B2%B3%E5%90%88%E6%A5%BD%E5%99%A8%E8%A3%BD%E4%BD%9C%E6%89%80-Musical-Instruments-Manufacturing-KTEC-cAGGT-ds-1108520/dp/B000BYM7FG/ref=pd_cp_21_2?_encoding=UTF8&pd_rd_i=B000BYM7FG&pd_rd_r=a6f02670-0b0c-11e9-a192-8ff15e5e6261&pd_rd_w=qE6rC&pd_rd_wg=mdpKR&pf_rd_p=2b3f7bc2-ce03-4854-a8c9-a9fbc069f595&pf_rd_r=NPJFDKF9H0WN2HTN49HK&psc=1&refRID=NPJFDKF9H0WN2HTN49HK)|1|
-|[RaspberryPi 3B+](http://akizukidenshi.com/catalog/g/gM-13470/) or [ESP32-DevKitC](http://akizukidenshi.com/catalog/g/gM-11819/) or [MachiKania typeM](https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-006.html)||1|
+|①[RaspberryPi 3B+](http://akizukidenshi.com/catalog/g/gM-13470/) ||
+|②[ESP32-DevKitC](http://akizukidenshi.com/catalog/g/gM-11819/)||
+|③[MachiKania typeM](https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-006.html)||①~③いずれか1|
 |DIN-5ソケット(メス)|[KDJ103-5](http://akizukidenshi.com/catalog/g/gC-09565/)など|1|
 |2.1ｍｍ標準DCジャック|[2DC0005D100](http://akizukidenshi.com/catalog/g/gC-01604)など|1|
 |1/4Wカーボン抵抗|220Ω|1|
