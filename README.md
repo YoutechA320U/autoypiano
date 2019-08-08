@@ -5,7 +5,7 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
  ## 概要
 このプログラムは、UARTとI2Cでソレノイド25個を制御しトイピアノを自動演奏します。
 
-![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.jpg "Picture1") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.jpg "Picture2") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.jpg "Picture3")
+![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.jpg "Picture1") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.jpg "Picture2") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.jpg "Picture3")![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture4.jpg "Picture4")
 ## 開発環境
     RaspberryPi 3B+: Raspbian　stretch, Python2.7
     ESP32-DevKitC: MicroPython
@@ -25,7 +25,7 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
 |①[RaspberryPi 3B+](http://akizukidenshi.com/catalog/g/gM-13470/) ||
 |②[ESP32-DevKitC](http://akizukidenshi.com/catalog/g/gM-11819/)||
 |③[MachiKania typeM](https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-006.html)|||
-|④Arduino||①~④いずれか1|
+|④Arduinoシリーズ1つ||①~④いずれか1|
 |DIN-5ソケット(メス)|[KDJ103-5](http://akizukidenshi.com/catalog/g/gC-09565/)など|1|
 |2.1ｍｍ標準DCジャック|[2DC0005D100](http://akizukidenshi.com/catalog/g/gC-01604)など|1|
 |1/4Wカーボン抵抗|220Ω|1|
