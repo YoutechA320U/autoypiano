@@ -25,7 +25,7 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
 |①[RaspberryPi 3B+](http://akizukidenshi.com/catalog/g/gM-13470/) ||
 |②[ESP32-DevKitC](http://akizukidenshi.com/catalog/g/gM-11819/)||
 |③[MachiKania typeM](https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-006.html)|||
-|④|Arduino||①~④いずれか1|
+|④Arduino||①~④いずれか1|
 |DIN-5ソケット(メス)|[KDJ103-5](http://akizukidenshi.com/catalog/g/gC-09565/)など|1|
 |2.1ｍｍ標準DCジャック|[2DC0005D100](http://akizukidenshi.com/catalog/g/gC-01604)など|1|
 |1/4Wカーボン抵抗|220Ω|1|
