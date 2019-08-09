@@ -53,6 +53,7 @@ RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www
 ### 参考コード・資料
 * <http://www.samplerbox.org/article/midiinwithrpi>  
 * <https://github.com/nezumi-tech/Hamoron-Firmware>
+* <https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library>
 * <https://github.com/arduino-libraries/MIDIUSB>
 
 ## 履歴
