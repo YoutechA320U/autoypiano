@@ -91,10 +91,10 @@ void loop() {
       //Serial.println(usbrx.byte2);
       //Serial.println(usbrx.byte3);
     } if (rx !=0) {  
-      Serial.println(rx1);
-      Serial.println(rx2);
-      Serial.println(rx3);
-    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 77 and usbrx.byte3 !=0) {
+      //Serial.println(rx1);
+      //Serial.println(rx2);
+      //Serial.println(rx3);
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 77 and usbrx.byte3 !=0) { //USB-MIDIでNoteOnの時
       mcp1.digitalWrite(0, HIGH);
     } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 78 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(1, HIGH);
@@ -144,59 +144,8 @@ void loop() {
       mcp2.digitalWrite(7, HIGH);
     } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 101 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(8, HIGH);
-
-    } if (rx != 0 and rx1 == 144 and rx2 == 77 and rx3 !=0) {
-      mcp1.digitalWrite(0, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 78 and rx3 !=0) {
-      mcp1.digitalWrite(1, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 79 and rx3 !=0) {
-      mcp1.digitalWrite(2, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 80 and rx3 !=0) {
-      mcp1.digitalWrite(3, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 81 and rx3 !=0) {
-      mcp1.digitalWrite(4, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 82 and rx3 !=0) {
-      mcp1.digitalWrite(5, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 83 and rx3 !=0) {
-      mcp1.digitalWrite(6, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 84 and rx3 !=0) {
-      mcp1.digitalWrite(7, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 85 and rx3 !=0) {
-      mcp1.digitalWrite(8, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 86 and rx3 !=0) {
-      mcp1.digitalWrite(9, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 87 and rx3 !=0) {
-      mcp1.digitalWrite(10, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 88 and rx3 !=0) {
-      mcp1.digitalWrite(11, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 89 and rx3 !=0) {
-      mcp1.digitalWrite(12, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 90 and rx3 !=0) {
-      mcp1.digitalWrite(13, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 91 and rx3 !=0) {
-      mcp1.digitalWrite(14, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 92 and rx3 !=0) {
-      mcp1.digitalWrite(15, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 93 and rx3 !=0) {
-      mcp2.digitalWrite(0, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 94 and rx3 !=0) {
-      mcp2.digitalWrite(1, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 95 and rx3 !=0) {
-      mcp2.digitalWrite(2, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 96 and rx3 !=0) {
-      mcp2.digitalWrite(3, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 97 and rx3 !=0) {
-      mcp2.digitalWrite(4, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 98 and rx3 !=0) {
-      mcp2.digitalWrite(5, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 99 and rx3 !=0) {
-      mcp2.digitalWrite(6, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 100 and rx3 !=0) {
-      mcp2.digitalWrite(7, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 101 and rx3 !=0) {
-      mcp2.digitalWrite(8, HIGH);
       
-    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 77 and usbrx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 77 and usbrx.byte3 ==0) { //USB-MIDIでNoteOffの時
       mcp1.digitalWrite(0, LOW); 
     } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 78 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(1, LOW); 
@@ -245,9 +194,60 @@ void loop() {
     } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 100 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(7, LOW); 
     } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 101 and usbrx.byte3 ==0) {
-      mcp2.digitalWrite(8, LOW); 
+      mcp2.digitalWrite(8, LOW);
+      
+    } if (rx != 0 and rx1 == 144 and rx2 == 77 and rx3 !=0) { //MIDIでNoteOnの時
+      mcp1.digitalWrite(0, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 78 and rx3 !=0) {
+      mcp1.digitalWrite(1, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 79 and rx3 !=0) {
+      mcp1.digitalWrite(2, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 80 and rx3 !=0) {
+      mcp1.digitalWrite(3, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 81 and rx3 !=0) {
+      mcp1.digitalWrite(4, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 82 and rx3 !=0) {
+      mcp1.digitalWrite(5, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 83 and rx3 !=0) {
+      mcp1.digitalWrite(6, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 84 and rx3 !=0) {
+      mcp1.digitalWrite(7, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 85 and rx3 !=0) {
+      mcp1.digitalWrite(8, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 86 and rx3 !=0) {
+      mcp1.digitalWrite(9, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 87 and rx3 !=0) {
+      mcp1.digitalWrite(10, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 88 and rx3 !=0) {
+      mcp1.digitalWrite(11, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 89 and rx3 !=0) {
+      mcp1.digitalWrite(12, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 90 and rx3 !=0) {
+      mcp1.digitalWrite(13, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 91 and rx3 !=0) {
+      mcp1.digitalWrite(14, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 92 and rx3 !=0) {
+      mcp1.digitalWrite(15, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 93 and rx3 !=0) {
+      mcp2.digitalWrite(0, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 94 and rx3 !=0) {
+      mcp2.digitalWrite(1, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 95 and rx3 !=0) {
+      mcp2.digitalWrite(2, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 96 and rx3 !=0) {
+      mcp2.digitalWrite(3, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 97 and rx3 !=0) {
+      mcp2.digitalWrite(4, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 98 and rx3 !=0) {
+      mcp2.digitalWrite(5, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 99 and rx3 !=0) {
+      mcp2.digitalWrite(6, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 100 and rx3 !=0) {
+      mcp2.digitalWrite(7, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 101 and rx3 !=0) {
+      mcp2.digitalWrite(8, HIGH); 
 
-    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0) { //MIDIでNoteOffの時
       mcp1.digitalWrite(0, LOW); 
     } if (rx != 0 and rx1 == 128 and rx2 == 78 and rx3 ==0) {
       mcp1.digitalWrite(1, LOW); 
