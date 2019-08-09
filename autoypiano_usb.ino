@@ -299,5 +299,5 @@ void loop() {
       mcp2.digitalWrite(8, LOW); 
     } else {
     }
-  } while (usbrx.header != 0);
+  } while (usbrx.header != 0 or rx !=0);
 }
