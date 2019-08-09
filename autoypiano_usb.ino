@@ -8,119 +8,7 @@ Adafruit_MCP23017 mcp2;
 
 MIDI_CREATE_DEFAULT_INSTANCE();
 
-void handleNoteOn(byte channel, byte note) {
-  note = AdjustNote(note);
 
-  if (note == 77) {
-    mcp1.digitalWrite(0, HIGH);
-  } else if (note == 78) {
-    mcp1.digitalWrite(1, HIGH);
-  } else if (note == 79) {
-    mcp1.digitalWrite(2, HIGH);
-  } else if (note == 80) {
-    mcp1.digitalWrite(3, HIGH);
-  } else if (note == 81) {
-    mcp1.digitalWrite(4, HIGH);
-  } else if (note == 82) {
-    mcp1.digitalWrite(5, HIGH);
-  } else if (note == 83) {
-    mcp1.digitalWrite(6, HIGH);
-  } else if (note == 84) {
-    mcp1.digitalWrite(7, HIGH);
-  } else if (note == 85) {
-    mcp1.digitalWrite(8, HIGH);
-  } else if (note == 86) {
-    mcp1.digitalWrite(9, HIGH);
-  } else if (note == 87) {
-    mcp1.digitalWrite(10, HIGH);
-  } else if (note == 88) {
-    mcp1.digitalWrite(11, HIGH);
-  } else if (note == 89) {
-    mcp1.digitalWrite(12, HIGH);
-  } else if (note == 90) {
-    mcp1.digitalWrite(13, HIGH);
-  } else if (note == 91) {
-    mcp1.digitalWrite(14, HIGH);
-  } else if (note == 92) {
-    mcp1.digitalWrite(15, HIGH);
-  } else if (note == 93) {
-    mcp2.digitalWrite(0, HIGH);
-  } else if (note == 94) {
-    mcp2.digitalWrite(1, HIGH);
-  } else if (note == 95) {
-    mcp2.digitalWrite(2, HIGH);
-  } else if (note == 96) {
-    mcp2.digitalWrite(3, HIGH);
-  } else if (note == 97) {
-    mcp2.digitalWrite(4, HIGH);
-  } else if (note == 98) {
-    mcp2.digitalWrite(5, HIGH);
-  } else if (note == 99) {
-    mcp2.digitalWrite(6, HIGH);
-  } else if (note == 100) {
-    mcp2.digitalWrite(7, HIGH);
-  } else if (note == 101) {
-    mcp2.digitalWrite(8, HIGH);
-  } else {
-  }
-}
-
-void handleNoteOff(byte channel, byte note) {
-  note = AdjustNote(note);
-
-  if (note == 77) {
-    mcp1.digitalWrite(0, LOW);
-  } else if (note == 78) {
-    mcp1.digitalWrite(1, LOW);
-  } else if (note == 79) {
-    mcp1.digitalWrite(2, LOW);
-  } else if (note == 80) {
-    mcp1.digitalWrite(3, LOW);
-  } else if (note == 81) {
-    mcp1.digitalWrite(4, LOW);
-  } else if (note == 82) {
-    mcp1.digitalWrite(5, LOW);
-  } else if (note == 83) {
-    mcp1.digitalWrite(6, LOW);
-  } else if (note == 84) {
-    mcp1.digitalWrite(7, LOW);
-  } else if (note == 85) {
-    mcp1.digitalWrite(8, LOW);
-  } else if (note == 86) {
-    mcp1.digitalWrite(9, LOW);
-  } else if (note == 87) {
-    mcp1.digitalWrite(10, LOW);
-  } else if (note == 88) {
-    mcp1.digitalWrite(11, LOW);
-  } else if (note == 89) {
-    mcp1.digitalWrite(12, LOW);
-  } else if (note == 90) {
-    mcp1.digitalWrite(13, LOW);
-  } else if (note == 91) {
-    mcp1.digitalWrite(14, LOW);
-  } else if (note == 92) {
-    mcp1.digitalWrite(15, LOW);
-  } else if (note == 93) {
-    mcp2.digitalWrite(0, LOW);
-  } else if (note == 94) {
-    mcp2.digitalWrite(1, LOW);
-  } else if (note == 95) {
-    mcp2.digitalWrite(2, LOW);
-  } else if (note == 96) {
-    mcp2.digitalWrite(3, LOW);
-  } else if (note == 97) {
-    mcp2.digitalWrite(4, LOW);
-  } else if (note == 98) {
-    mcp2.digitalWrite(5, LOW);
-  } else if (note == 99) {
-    mcp2.digitalWrite(6, LOW);
-  } else if (note == 100) {
-    mcp2.digitalWrite(7, LOW);
-  } else if (note == 101) {
-    mcp2.digitalWrite(8, LOW);
-  } else {
-  }
-}
 int AdjustNote (int note) {
   if (note <= 101 && note >= 77) {
   } else if (note > 101) {
@@ -179,124 +67,237 @@ void setup() {
   mcp2.pinMode(6, OUTPUT);
   mcp2.pinMode(7, OUTPUT);
   mcp2.pinMode(8, OUTPUT);
-  MIDI.setHandleNoteOn(handleNoteOn);
-  MIDI.setHandleNoteOff(handleNoteOff);
-
+ 
   MIDI.begin(1);
 }
 
 void loop() {
-  MIDI.read();
-  midiEventPacket_t rx;
+  //MIDI.read();
+  int rx;
+  int rx1;
+  int rx2;
+  int rx3;
+  midiEventPacket_t usbrx;
   do {
-    rx = MidiUSB.read();
-    rx.byte2 = AdjustNote(rx.byte2);
-    if (rx.header != 0 ) {
-      //Serial.println(rx.byte1);
-      //Serial.println(rx.byte2);
-      //Serial.println(rx.byte3);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 77 and rx.byte3 !=0) {
+    rx =  MIDI.read();
+    rx1 = MIDI.getType();
+    rx2 = MIDI.getData1();
+    rx3 = MIDI.getData2();
+    usbrx = MidiUSB.read();
+    usbrx.byte2 = AdjustNote(usbrx.byte2);
+    rx2 = AdjustNote(rx2);
+    if (usbrx.header != 0) {
+      //Serial.println(usbrx.byte1);
+      //Serial.println(usbrx.byte2);
+      //Serial.println(usbrx.byte3);
+    } if (rx !=0) {  
+      Serial.println(rx1);
+      Serial.println(rx2);
+      Serial.println(rx3);
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 77 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(0, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 78 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 78 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(1, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 79 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 79 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(2, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 80 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 80 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(3, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 81 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 81 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(4, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 82 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 82 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(5, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 83 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 83 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(6, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 84 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 84 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(7, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 85 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 85 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(8, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 86 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 86 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(9, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 87 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 87 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(10, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 88 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 88 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(11, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 89 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 89 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(12, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 90 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 90 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(13, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 91 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 91 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(14, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 92 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 92 and usbrx.byte3 !=0) {
       mcp1.digitalWrite(15, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 93 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 93 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(0, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 94 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 94 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(1, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 95 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 95 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(2, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 96 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 96 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(3, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 97 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 97 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(4, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 98 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 98 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(5, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 99 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 99 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(6, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 100 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 100 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(7, HIGH);
-    } if (rx.header != 0 and rx.byte1 == 144 and rx.byte2 == 101 and rx.byte3 !=0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 144 and usbrx.byte2 == 101 and usbrx.byte3 !=0) {
       mcp2.digitalWrite(8, HIGH);
 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 77 and rx.byte3 ==0) {
+    } if (rx != 0 and rx1 == 144 and rx2 == 77 and rx3 !=0) {
+      mcp1.digitalWrite(0, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 78 and rx3 !=0) {
+      mcp1.digitalWrite(1, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 79 and rx3 !=0) {
+      mcp1.digitalWrite(2, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 80 and rx3 !=0) {
+      mcp1.digitalWrite(3, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 81 and rx3 !=0) {
+      mcp1.digitalWrite(4, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 82 and rx3 !=0) {
+      mcp1.digitalWrite(5, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 83 and rx3 !=0) {
+      mcp1.digitalWrite(6, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 84 and rx3 !=0) {
+      mcp1.digitalWrite(7, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 85 and rx3 !=0) {
+      mcp1.digitalWrite(8, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 86 and rx3 !=0) {
+      mcp1.digitalWrite(9, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 87 and rx3 !=0) {
+      mcp1.digitalWrite(10, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 88 and rx3 !=0) {
+      mcp1.digitalWrite(11, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 89 and rx3 !=0) {
+      mcp1.digitalWrite(12, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 90 and rx3 !=0) {
+      mcp1.digitalWrite(13, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 91 and rx3 !=0) {
+      mcp1.digitalWrite(14, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 92 and rx3 !=0) {
+      mcp1.digitalWrite(15, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 93 and rx3 !=0) {
+      mcp2.digitalWrite(0, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 94 and rx3 !=0) {
+      mcp2.digitalWrite(1, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 95 and rx3 !=0) {
+      mcp2.digitalWrite(2, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 96 and rx3 !=0) {
+      mcp2.digitalWrite(3, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 97 and rx3 !=0) {
+      mcp2.digitalWrite(4, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 98 and rx3 !=0) {
+      mcp2.digitalWrite(5, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 99 and rx3 !=0) {
+      mcp2.digitalWrite(6, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 100 and rx3 !=0) {
+      mcp2.digitalWrite(7, HIGH);
+    } if (rx != 0 and rx1 == 144 and rx2 == 101 and rx3 !=0) {
+      mcp2.digitalWrite(8, HIGH);
+      
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 77 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(0, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 78 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 78 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(1, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 79 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 79 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(2, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 80 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 80 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(3, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 81 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 81 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(4, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 82 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 82 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(5, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 83 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 83 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(6, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 84 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 84 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(7, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 85 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 85 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(8, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 86 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 86 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(9, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 87 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 87 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(10, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 88 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 88 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(11, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 89 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 89 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(12, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 90 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 90 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(13, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 91 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 91 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(14, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 92 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 92 and usbrx.byte3 ==0) {
       mcp1.digitalWrite(15, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 93 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 93 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(0, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 94 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 94 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(1, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 95 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 95 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(2, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 96 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 96 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(3, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 97 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 97 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(4, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 98 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 98 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(5, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 99 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 99 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(6, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 100 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 100 and usbrx.byte3 ==0) {
       mcp2.digitalWrite(7, LOW); 
-    } if (rx.header != 0 and rx.byte1 == 128 and rx.byte2 == 101 and rx.byte3 ==0) {
+    } if (usbrx.header != 0 and usbrx.byte1 == 128 and usbrx.byte2 == 101 and usbrx.byte3 ==0) {
+      mcp2.digitalWrite(8, LOW); 
+
+    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0) {
+      mcp1.digitalWrite(0, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 78 and rx3 ==0) {
+      mcp1.digitalWrite(1, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 79 and rx3 ==0) {
+      mcp1.digitalWrite(2, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 80 and rx3 ==0) {
+      mcp1.digitalWrite(3, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 81 and rx3 ==0) {
+      mcp1.digitalWrite(4, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 82 and rx3 ==0) {
+      mcp1.digitalWrite(5, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 83 and rx3 ==0) {
+      mcp1.digitalWrite(6, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 84 and rx3 ==0) {
+      mcp1.digitalWrite(7, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 85 and rx3 ==0) {
+      mcp1.digitalWrite(8, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 86 and rx3 ==0) {
+      mcp1.digitalWrite(9, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 87 and rx3 ==0) {
+      mcp1.digitalWrite(10, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 88 and rx3 ==0) {
+      mcp1.digitalWrite(11, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 89 and rx3 ==0) {
+      mcp1.digitalWrite(12, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 90 and rx3 ==0) {
+      mcp1.digitalWrite(13, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 91 and rx3 ==0) {
+      mcp1.digitalWrite(14, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 92 and rx3 ==0) {
+      mcp1.digitalWrite(15, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 93 and rx3 ==0) {
+      mcp2.digitalWrite(0, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 94 and rx3 ==0) {
+      mcp2.digitalWrite(1, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 95 and rx3 ==0) {
+      mcp2.digitalWrite(2, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 96 and rx3 ==0) {
+      mcp2.digitalWrite(3, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 97 and rx3 ==0) {
+      mcp2.digitalWrite(4, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 98 and rx3 ==0) {
+      mcp2.digitalWrite(5, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 99 and rx3 ==0) {
+      mcp2.digitalWrite(6, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 100 and rx3 ==0) {
+      mcp2.digitalWrite(7, LOW); 
+    } if (rx != 0 and rx1 == 128 and rx2 == 101 and rx3 ==0) {
       mcp2.digitalWrite(8, LOW); 
     } else {
     }
-  } while (rx.header != 0);
+  } while (usbrx.header != 0);
 }
