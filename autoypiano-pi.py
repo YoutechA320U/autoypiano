@@ -33,7 +33,7 @@ note1a = list(bin(i2c.read_byte_data(0x20, 0x14)).replace('0b', '').zfill(8))
 note1b = list(bin(i2c.read_byte_data(0x20, 0x15)).replace('0b', '').zfill(8))
 note2a = list(bin(i2c.read_byte_data(0x21, 0x14)).replace('0b', '').zfill(8))
 note2b = list(bin(i2c.read_byte_data(0x21, 0x15)).replace('0b', '').zfill(8))
-subprocess.Popen(['sudo', 'python', '/home/pi/shutdown.py'])
+
 while True:
   data1 = ord(ser.read(1)) #1バイト目
   if data1 == 247:
