@@ -1,12 +1,15 @@
 #include <Wire.h>
-#include <MIDI.h>
 #include <Adafruit_MCP23017.h>
+#include <MIDI.h>
 
 Adafruit_MCP23017 mcp1;
 Adafruit_MCP23017 mcp2;
 
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+int sole_sum = 0;
+int sole_limit = 4; //ソレノイド発音数制限。作者の環境では4
+int sole_on[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 int AdjustNote (int note) {
   if (note <= 101 && note >= 77) {
@@ -66,8 +69,8 @@ void setup() {
   mcp2.pinMode(6, OUTPUT);
   mcp2.pinMode(7, OUTPUT);
   mcp2.pinMode(8, OUTPUT);
- 
-  MIDI.begin(1);
+  
+  MIDI.begin(1); 
 }
 
 void loop() {
@@ -82,112 +85,211 @@ void loop() {
     rx2 = MIDI.getData1();
     rx3 = MIDI.getData2();
     rx2 = AdjustNote(rx2);
+    //Serial.println(sole_sum);
     if (rx !=0) {  
       //Serial.println(rx1);
       //Serial.println(rx2);
       //Serial.println(rx3);
-      
-    } if (rx != 0 and rx1 == 144 and rx2 == 77 and rx3 !=0) { //MIDIでNoteOnの時
+    } if (rx != 0 and rx1 == 144 and rx2 == 77 and rx3 !=0 and sole_sum < sole_limit and sole_on[0] ==0) { //MIDIでNoteOnの時
       mcp1.digitalWrite(0, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 78 and rx3 !=0) {
+      sole_on[0] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 78 and rx3 !=0 and sole_sum < sole_limit and sole_on[1] ==0) {
       mcp1.digitalWrite(1, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 79 and rx3 !=0) {
+      sole_on[1] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 79 and rx3 !=0 and sole_sum < sole_limit and sole_on[2] ==0) {
       mcp1.digitalWrite(2, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 80 and rx3 !=0) {
+      sole_on[2] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 80 and rx3 !=0 and sole_sum < sole_limit and sole_on[3] ==0) {
       mcp1.digitalWrite(3, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 81 and rx3 !=0) {
+      sole_on[3] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 81 and rx3 !=0 and sole_sum < sole_limit and sole_on[4] ==0) {
       mcp1.digitalWrite(4, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 82 and rx3 !=0) {
+      sole_on[4] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 82 and rx3 !=0 and sole_sum < sole_limit and sole_on[5] ==0) {
       mcp1.digitalWrite(5, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 83 and rx3 !=0) {
+      sole_on[5] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 83 and rx3 !=0 and sole_sum < sole_limit and sole_on[6] ==0) {
       mcp1.digitalWrite(6, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 84 and rx3 !=0) {
+      sole_on[6] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 84 and rx3 !=0 and sole_sum < sole_limit and sole_on[7] ==0) {
       mcp1.digitalWrite(7, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 85 and rx3 !=0) {
+      sole_on[7] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 85 and rx3 !=0 and sole_sum < sole_limit and sole_on[8] ==0) {
       mcp1.digitalWrite(8, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 86 and rx3 !=0) {
+      sole_on[8] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 86 and rx3 !=0 and sole_sum < sole_limit and sole_on[9] ==0) {
       mcp1.digitalWrite(9, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 87 and rx3 !=0) {
+      sole_on[9] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 87 and rx3 !=0 and sole_sum < sole_limit and sole_on[10] ==0) {
       mcp1.digitalWrite(10, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 88 and rx3 !=0) {
+      sole_on[10] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 88 and rx3 !=0 and sole_sum < sole_limit and sole_on[11] ==0) {
       mcp1.digitalWrite(11, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 89 and rx3 !=0) {
+      sole_on[11] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 89 and rx3 !=0 and sole_sum < sole_limit and sole_on[12] ==0) {
       mcp1.digitalWrite(12, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 90 and rx3 !=0) {
+      sole_on[12] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 90 and rx3 !=0 and sole_sum < sole_limit and sole_on[13] ==0) {
       mcp1.digitalWrite(13, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 91 and rx3 !=0) {
+      sole_on[13] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 91 and rx3 !=0 and sole_sum < sole_limit and sole_on[14] ==0) {
       mcp1.digitalWrite(14, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 92 and rx3 !=0) {
+      sole_on[14] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 92 and rx3 !=0 and sole_sum < sole_limit and sole_on[15] ==0) {
       mcp1.digitalWrite(15, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 93 and rx3 !=0) {
+      sole_on[15] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 93 and rx3 !=0 and sole_sum < sole_limit and sole_on[16] ==0) {
       mcp2.digitalWrite(0, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 94 and rx3 !=0) {
+      sole_on[16] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 94 and rx3 !=0 and sole_sum < sole_limit and sole_on[17] ==0) {
       mcp2.digitalWrite(1, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 95 and rx3 !=0) {
+      sole_on[17] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 95 and rx3 !=0 and sole_sum < sole_limit and sole_on[18] ==0) {
       mcp2.digitalWrite(2, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 96 and rx3 !=0) {
+      sole_on[18] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 96 and rx3 !=0 and sole_sum < sole_limit and sole_on[19] ==0) {
       mcp2.digitalWrite(3, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 97 and rx3 !=0) {
+      sole_on[19] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 97 and rx3 !=0 and sole_sum < sole_limit and sole_on[20] ==0) {
       mcp2.digitalWrite(4, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 98 and rx3 !=0) {
+      sole_on[20] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 98 and rx3 !=0 and sole_sum < sole_limit and sole_on[21] ==0) {
       mcp2.digitalWrite(5, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 99 and rx3 !=0) {
+      sole_on[21] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 99 and rx3 !=0 and sole_sum < sole_limit and sole_on[22] ==0) {
       mcp2.digitalWrite(6, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 100 and rx3 !=0) {
+      sole_on[22] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 100 and rx3 !=0 and sole_sum < sole_limit and sole_on[23] ==0) {
       mcp2.digitalWrite(7, HIGH);
-    } if (rx != 0 and rx1 == 144 and rx2 == 101 and rx3 !=0) {
-      mcp2.digitalWrite(8, HIGH); 
-
-    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0) { //MIDIでNoteOffの時
+      sole_on[23] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 144 and rx2 == 101 and rx3 !=0 and sole_sum < sole_limit and sole_on[24] ==0) {
+      mcp2.digitalWrite(8, HIGH);
+      sole_on[24] =1;
+      sole_sum = sole_sum + 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0 and sole_on[0] ==1) { //MIDIでNoteOffの時
       mcp1.digitalWrite(0, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 78 and rx3 ==0) {
+      sole_on[0] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 78 and rx3 ==0 and sole_on[1] ==1) {
       mcp1.digitalWrite(1, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 79 and rx3 ==0) {
+      sole_on[1] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 79 and rx3 ==0 and sole_on[2] ==1) {
       mcp1.digitalWrite(2, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 80 and rx3 ==0) {
-      mcp1.digitalWrite(3, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 81 and rx3 ==0) {
-      mcp1.digitalWrite(4, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 82 and rx3 ==0) {
+      sole_on[2] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 80 and rx3 ==0 and sole_on[3] ==1) {
+      mcp1.digitalWrite(3, LOW);
+      sole_on[3] =0;
+      sole_sum = sole_sum - 1; 
+    } if (rx != 0 and rx1 == 128 and rx2 == 81 and rx3 ==0 and sole_on[4] ==1) {
+      mcp1.digitalWrite(4, LOW);
+      sole_on[4] =0;
+      sole_sum = sole_sum - 1; 
+    } if (rx != 0 and rx1 == 128 and rx2 == 82 and rx3 ==0 and sole_on[5] ==1) {
       mcp1.digitalWrite(5, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 83 and rx3 ==0) {
+      sole_on[5] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 83 and rx3 ==0 and sole_on[6] ==1) {
       mcp1.digitalWrite(6, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 84 and rx3 ==0) {
+      sole_on[6] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 84 and rx3 ==0 and sole_on[7] ==1) {
       mcp1.digitalWrite(7, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 85 and rx3 ==0) {
+      sole_on[7] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 85 and rx3 ==0 and sole_on[8] ==1) {
       mcp1.digitalWrite(8, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 86 and rx3 ==0) {
+      sole_on[8] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 86 and rx3 ==0 and sole_on[9] ==1) {
       mcp1.digitalWrite(9, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 87 and rx3 ==0) {
+      sole_on[9] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 87 and rx3 ==0 and sole_on[10] ==1) {
       mcp1.digitalWrite(10, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 88 and rx3 ==0) {
+      sole_on[10] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 88 and rx3 ==0 and sole_on[11] ==1) {
       mcp1.digitalWrite(11, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 89 and rx3 ==0) {
+      sole_on[11] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 89 and rx3 ==0 and sole_on[12] ==1) {
       mcp1.digitalWrite(12, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 90 and rx3 ==0) {
+      sole_on[12] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 90 and rx3 ==0 and sole_on[13] ==1) {
       mcp1.digitalWrite(13, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 91 and rx3 ==0) {
+      sole_on[13] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 91 and rx3 ==0 and sole_on[14] ==1) {
       mcp1.digitalWrite(14, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 92 and rx3 ==0) {
+      sole_on[14] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 92 and rx3 ==0 and sole_on[15] ==1) {
       mcp1.digitalWrite(15, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 93 and rx3 ==0) {
+      sole_on[15] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 93 and rx3 ==0 and sole_on[16] ==1) {
       mcp2.digitalWrite(0, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 94 and rx3 ==0) {
+      sole_on[16] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 94 and rx3 ==0 and sole_on[17] ==1) {
       mcp2.digitalWrite(1, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 95 and rx3 ==0) {
+      sole_on[17] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 95 and rx3 ==0 and sole_on[18] ==1) {
       mcp2.digitalWrite(2, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 96 and rx3 ==0) {
+      sole_on[18] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 96 and rx3 ==0 and sole_on[19] ==1) {
       mcp2.digitalWrite(3, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 97 and rx3 ==0) {
+      sole_on[19] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 97 and rx3 ==0 and sole_on[20] ==1) {
       mcp2.digitalWrite(4, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 98 and rx3 ==0) {
+      sole_on[20] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 98 and rx3 ==0 and sole_on[21] ==1) {
       mcp2.digitalWrite(5, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 99 and rx3 ==0) {
+      sole_on[21] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 99 and rx3 ==0 and sole_on[22] ==1) {
       mcp2.digitalWrite(6, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 100 and rx3 ==0) {
+      sole_on[22] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 100 and rx3 ==0 and sole_on[23] ==1) {
       mcp2.digitalWrite(7, LOW); 
-    } if (rx != 0 and rx1 == 128 and rx2 == 101 and rx3 ==0) {
-      mcp2.digitalWrite(8, LOW); 
+      sole_on[23] =0;
+      sole_sum = sole_sum - 1;
+    } if (rx != 0 and rx1 == 128 and rx2 == 101 and rx3 ==0 and sole_on[24] ==1) {
+      mcp2.digitalWrite(8, LOW);
+      sole_on[24] =0;
+      sole_sum = sole_sum - 1;
     } else {
     }
   } while (rx !=0);
