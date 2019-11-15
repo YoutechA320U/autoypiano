@@ -47,6 +47,8 @@ RaspberryPiが[autoypiano-pi.py](https://github.com/YoutechA320U/autoypiano/blob
 
 RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www.samplerbox.org/article/midiinwithrpi)I2Cを有効にしてから実行してください。
 
+Arduino系のみ最大同時発音数が設定されています(デフォルトで4)
+
 ## 備考
 電源の出力が足りないと複数のソレノイドを同時にONできません。ソレノイドによって必要な電源の出力は変わります。また、トランジスタやソレノイドに負担がかかるのであまり長時間ソレノイドをONのままにしないでください。
 
@@ -60,4 +62,5 @@ RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www
     [2018/12/7] - 初回リリース
     [2018/12/29] - 部品表作りました
     [2018/12/29] - MachiKaniaに対応
-    [2019/08/08] - Arduino,ArduinoLeonardoに対応
+    [2019/08/08] - Arduino,ArduinoLeonardo,M5Stackに対応
+    [2019/11/15] - 発音数制限を追加(Arduino系のみ)
