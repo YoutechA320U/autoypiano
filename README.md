@@ -13,10 +13,11 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
     Arduino：ArduinoIDE
 
 ## インストールが必要なライブラリ
-    Python2.7：pyserial,　smbus　argparse
+    Python2.7：pyserial, smbus, argparse
     MicroPython：machine
     Arduino：Adafruit_MCP23017, MIDI
-    ArduinoLeonardo：Adafruit_MCP23017, MIDIUSB
+    ArduinoLeonardo：Adafruit_MCP23017, MIDIUSB,
+    ESP32：Arduino-BLE-MIDI
 
 ## 必要な部品
 |部品名|型番など|数量|
