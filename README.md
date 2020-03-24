@@ -25,7 +25,8 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
 |①[RaspberryPi 3B+](http://akizukidenshi.com/catalog/g/gM-13470/) ||
 |②[ESP32-DevKitC](http://akizukidenshi.com/catalog/g/gM-11819/)||
 |③[MachiKania typeM](https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-006.html)|||
-|④Arduinoシリーズ1つ||①~④いずれか1|
+|④Arduinoシリーズ1つ|||
+|⑤[M5Stack](https://www.switch-science.com/catalog/3647/)||①~⑤いずれか1|
 |DIN-5ソケット(メス)|[KDJ103-5](http://akizukidenshi.com/catalog/g/gC-09565/)など|1|
 |2.1ｍｍ標準DCジャック|[2DC0005D100](http://akizukidenshi.com/catalog/g/gC-01604)など|1|
 |1/4Wカーボン抵抗|220Ω|1|
@@ -43,20 +44,23 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
 ![SS](https://github.com/YoutechA320U/autoypiano/blob/master/ToyPiano.png "回路図")
 
 ## 使い方
-RaspberryPiが[autoypiano-pi.py](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-pi.py)、ESP32が[autoypiano-micro.py](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-micro.py)、MachiKaniaが[TOYPIANO.BAS](https://github.com/YoutechA320U/autoypiano/blob/master/TOYPIANO.BAS)、ArduinoLeonardo以外が[autoypiano.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano.ino)、ArduinoLeonardoが[autoypiano_usb.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano_usb.ino)です。
+RaspberryPiが[autoypiano-pi.py](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-pi.py)、ESP32(MIcroPython)が[autoypiano-micro.py](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano-micro.py)、MachiKania typeMが[TOYPIANO.BAS](https://github.com/YoutechA320U/autoypiano/blob/master/TOYPIANO.BAS)、ArduinoLeonardo以外が[autoypiano.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano.ino)、ArduinoLeonardo USB-MIDI対応が[autoypiano_usb.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano_usb.ino)、M5Stackが[M5autoypiano.ino](https://github.com/YoutechA320U/autoypiano/blob/master/M5autoypiano.ino)、ESP32(Arduino系) BLE-MIDI対応(※試験的)が[ESP32_BLE_autoypiano.ino](https://github.com/YoutechA320U/autoypiano/blob/master/ESP32_BLE_autoypiano.ino)です。
 
 RaspberryPiは[UARTを有効にしてMIDI用に設定を変更し、](http://www.samplerbox.org/article/midiinwithrpi)I2Cを有効にしてから実行してください。
 
-Arduino系のみ最大同時発音数が設定されています(デフォルトで4)
+Arduino系は最大同時発音数が設定されています(デフォルトで4)
 
 ## 備考
 電源の出力が足りないと複数のソレノイドを同時にONできません。ソレノイドによって必要な電源の出力は変わります。また、トランジスタやソレノイドに負担がかかるのであまり長時間ソレノイドをONのままにしないでください。
+
+USB-MIDI、BLE-MIDI対応版は通常のMIDI-INも使用可能です。
 
 ### 参考コード・資料
 * <http://www.samplerbox.org/article/midiinwithrpi>  
 * <https://github.com/nezumi-tech/Hamoron-Firmware>
 * <https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library>
 * <https://github.com/arduino-libraries/MIDIUSB>
+* <https://github.com/lathoub/Arduino-BLE-MIDI>
 
 ## 履歴
     [2018/12/7] - 初回リリース
@@ -64,3 +68,4 @@ Arduino系のみ最大同時発音数が設定されています(デフォルト
     [2018/12/29] - MachiKaniaに対応
     [2019/08/08] - Arduino,ArduinoLeonardo,M5Stackに対応
     [2019/11/15] - 発音数制限を追加(Arduino系のみ)
+    [2020/03/24] - BLE-MIDIに対応(ESP32のみ、試験的)
