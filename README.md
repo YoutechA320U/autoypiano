@@ -7,13 +7,13 @@ ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノ�
 
 ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture1.jpg "RaspberryPi版") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture2.jpg "ESP32版") ![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture3.jpg "MachiKania TypeM版")![Picture](https://github.com/YoutechA320U/autoypiano/blob/master/picture4.jpg "ArduinoProMicro版")
 ## 開発環境
-    RaspberryPi 3B+: Raspbian　stretch, Python2.7
+    RaspberryPi 3B+: Raspbian　stretch, Python3.7
     ESP32-DevKitC: MicroPython
     MachiKania typeM: KM-1301
     Arduino：ArduinoIDE
 
 ## インストールが必要なライブラリ
-    Python2.7：pyserial, smbus, argparse
+    Python3.7：pyserial, smbus, argparse, Python-RtMidi
     MicroPython：machine
     Arduino：Adafruit_MCP23017, MIDI
     ArduinoLeonardo：Adafruit_MCP23017, MIDIUSB,
@@ -70,3 +70,4 @@ USB-MIDI、BLE-MIDI対応版は通常のMIDI-INも使用可能です。
     [2019/08/08] - Arduino,ArduinoLeonardo,M5Stackに対応
     [2019/11/15] - 発音数制限を追加(Arduino系のみ)
     [2020/03/24] - BLE-MIDIに対応(ESP32のみ、試験的)
+    [2020/04/01] - 仮想MIDIポート版を追加(RaspberryPi用)
