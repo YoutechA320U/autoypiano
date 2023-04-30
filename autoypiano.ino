@@ -190,103 +190,103 @@ void loop() {
       mcp2.digitalWrite(8, HIGH);
       sole_on[24] =1;
       sole_sum = sole_sum + 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 77 and rx3 ==0 and sole_on[0] ==1) { //MIDIでNoteOffの時
+    } if (rx != 0 and rx1 == 128 and rx2 == 77 and sole_on[0] ==1) { //MIDIでNoteOffの時
       mcp1.digitalWrite(0, LOW); 
       sole_on[0] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 78 and rx3 ==0 and sole_on[1] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 78 and sole_on[1] ==1) {
       mcp1.digitalWrite(1, LOW); 
       sole_on[1] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 79 and rx3 ==0 and sole_on[2] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 79 and sole_on[2] ==1) {
       mcp1.digitalWrite(2, LOW); 
       sole_on[2] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 80 and rx3 ==0 and sole_on[3] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 80 and sole_on[3] ==1) {
       mcp1.digitalWrite(3, LOW);
       sole_on[3] =0;
       sole_sum = sole_sum - 1; 
-    } if (rx != 0 and rx1 == 128 and rx2 == 81 and rx3 ==0 and sole_on[4] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 81 and sole_on[4] ==1) {
       mcp1.digitalWrite(4, LOW);
       sole_on[4] =0;
       sole_sum = sole_sum - 1; 
-    } if (rx != 0 and rx1 == 128 and rx2 == 82 and rx3 ==0 and sole_on[5] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 82 and sole_on[5] ==1) {
       mcp1.digitalWrite(5, LOW); 
       sole_on[5] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 83 and rx3 ==0 and sole_on[6] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 83 and sole_on[6] ==1) {
       mcp1.digitalWrite(6, LOW); 
       sole_on[6] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 84 and rx3 ==0 and sole_on[7] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 84 and sole_on[7] ==1) {
       mcp1.digitalWrite(7, LOW); 
       sole_on[7] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 85 and rx3 ==0 and sole_on[8] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 85 and sole_on[8] ==1) {
       mcp1.digitalWrite(8, LOW); 
       sole_on[8] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 86 and rx3 ==0 and sole_on[9] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 86 and sole_on[9] ==1) {
       mcp1.digitalWrite(9, LOW); 
       sole_on[9] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 87 and rx3 ==0 and sole_on[10] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 87 and sole_on[10] ==1) {
       mcp1.digitalWrite(10, LOW); 
       sole_on[10] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 88 and rx3 ==0 and sole_on[11] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 88 and sole_on[11] ==1) {
       mcp1.digitalWrite(11, LOW); 
       sole_on[11] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 89 and rx3 ==0 and sole_on[12] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 89 and sole_on[12] ==1) {
       mcp1.digitalWrite(12, LOW); 
       sole_on[12] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 90 and rx3 ==0 and sole_on[13] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 90 and sole_on[13] ==1) {
       mcp1.digitalWrite(13, LOW); 
       sole_on[13] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 91 and rx3 ==0 and sole_on[14] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 91 and sole_on[14] ==1) {
       mcp1.digitalWrite(14, LOW); 
       sole_on[14] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 92 and rx3 ==0 and sole_on[15] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 92 and sole_on[15] ==1) {
       mcp1.digitalWrite(15, LOW); 
       sole_on[15] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 93 and rx3 ==0 and sole_on[16] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 93 and sole_on[16] ==1) {
       mcp2.digitalWrite(0, LOW); 
       sole_on[16] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 94 and rx3 ==0 and sole_on[17] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 94 and sole_on[17] ==1) {
       mcp2.digitalWrite(1, LOW); 
       sole_on[17] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 95 and rx3 ==0 and sole_on[18] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 95 and sole_on[18] ==1) {
       mcp2.digitalWrite(2, LOW); 
       sole_on[18] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 96 and rx3 ==0 and sole_on[19] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 96 and sole_on[19] ==1) {
       mcp2.digitalWrite(3, LOW); 
       sole_on[19] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 97 and rx3 ==0 and sole_on[20] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 97 and sole_on[20] ==1) {
       mcp2.digitalWrite(4, LOW); 
       sole_on[20] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 98 and rx3 ==0 and sole_on[21] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 98 and sole_on[21] ==1) {
       mcp2.digitalWrite(5, LOW); 
       sole_on[21] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 99 and rx3 ==0 and sole_on[22] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 99 and sole_on[22] ==1) {
       mcp2.digitalWrite(6, LOW); 
       sole_on[22] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 100 and rx3 ==0 and sole_on[23] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 100 and sole_on[23] ==1) {
       mcp2.digitalWrite(7, LOW); 
       sole_on[23] =0;
       sole_sum = sole_sum - 1;
-    } if (rx != 0 and rx1 == 128 and rx2 == 101 and rx3 ==0 and sole_on[24] ==1) {
+    } if (rx != 0 and rx1 == 128 and rx2 == 101 and sole_on[24] ==1) {
       mcp2.digitalWrite(8, LOW);
       sole_on[24] =0;
       sole_sum = sole_sum - 1;
