@@ -515,6 +515,8 @@ void loop(){
       mcp2.digitalWrite(8, LOW);
       sole_on[24] =0;
       sole_sum = sole_sum - 1;
+    } if (sole_sum < 0) { 
+      sole_sum = 0;
     } else {
     }
   } while (rx !=0);
