@@ -1,6 +1,6 @@
 # autoypiano
 
-ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノプログラム。ノートNo.77~101まで、ノートON,ノートOFFのみ対応
+ESP32 & RaspberryPi & MachiKania typeM & Arduino用自動演奏トイピアノプログラム。ノートNo.77~101まで、ノートON,ノートOFFのみ対応。
 
  ## 概要
 このプログラムは、UARTとI2Cでソレノイド25個を制御しトイピアノを自動演奏します。
@@ -56,6 +56,8 @@ Arduino系は最大同時発音数が設定されています(デフォルトで
 
 USB-MIDI、BLE-MIDI対応版は通常のMIDI-INも使用可能です。
 
+[autoypiano.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano.ino)、[autoypiano_usb.ino](https://github.com/YoutechA320U/autoypiano/blob/master/autoypiano_usb.ino)がMIDI1.0準拠です。それ以外のプログラムはソフト、シーケンサによっては正常に動作しない可能性があります。全てaplaymidiコマンドでは動作を確認しています。
+
 ### 参考コード・資料
 * <http://www.samplerbox.org/article/midiinwithrpi>  
 * <https://github.com/nezumi-tech/Hamoron-Firmware>
@@ -71,4 +73,4 @@ USB-MIDI、BLE-MIDI対応版は通常のMIDI-INも使用可能です。
     [2019/11/15] - 発音数制限を追加(Arduino系のみ)
     [2020/03/24] - BLE-MIDIに対応(ESP32のみ、試験的)
     [2020/04/01] - 仮想MIDIポート版を追加(RaspberryPi用)
-    [2023/04/30] - ノートオフ条件で3バイト目は見ないよう変更(Arduino系のみ)
+    [2023/04/30] - ノートオフ条件で3バイト目は見ないよう変更。ノートオンベロシティ0でもノートオフするよう修正(Arduino系のみ)。
